@@ -13,7 +13,7 @@ class GithubPage {
     get errorFlash() { return $('.js-flash-alert') }
 
     // Селектори для Навігації та Explore
-    get pricingLink() { return $('nav').$('*=Pricing') }
+    get pricingLink() { return $('header a[href*="/pricing"]') }
     get trendingTab() { return $('a=Trending') }
     get footerTermsLink() { return $('a=Terms') }
 

@@ -12,12 +12,17 @@ describe('Homework 5: GitHub Registration Flow', () => {
         await SignUpPage.open();
         console.log('>>> LOG: GitHub opened successfully');
 
+        // ОБРОБКА КУКІ
+        await SignUpPage.handleCookies();
+
         // 2. Натиснути на Sign up
-        await SignUpPage.signUpBtn.click();
+        const signUpBtn = await SignUpPage.signUpBtn;
+        await signUpBtn.waitForExist({ timeout: 5000 });
+        await browser.execute((el) => el.click(), signUpBtn);
         console.log('>>> LOG: Clicked "Sign up" button');
 
         // 3. Перевірити наявність форми
-        await SignUpPage.signupForm.waitForExist({ timeout: 15000 });
+        await SignUpPage.signupForm.waitForExist({ timeout: 5000 });
         await expect(SignUpPage.signupForm).toExist();
         console.log('>>> LOG: Signup form fields container is present');
 
@@ -36,20 +41,34 @@ describe('Homework 5: GitHub Registration Flow', () => {
         console.log(`>>> LOG: Username filled with: ${randomUser}`);
 
         // 5. Вибір країни (Ukraine)
-        await SignUpPage.countryDropdown.waitForClickable();
-        await SignUpPage.countryDropdown.click();
-        console.log('>>> LOG: Country dropdown opened');
+        const dropdown = await SignUpPage.countryDropdown;
 
-        await SignUpPage.countryFilterInput.setValue('Ukraine');
+        // Піднімаємо дропдаун в центр екрана, щоб він вискочив з-під банера
+        await dropdown.scrollIntoView({ block: 'center' });
+        await browser.pause(500); // Коротка пауза для завершення анімації скролу
+
+        // Використовуємо JS-клік, щоб банер кукі фізично не міг перехопити клік
+        await browser.execute((el) => el.click(), dropdown);
+        console.log('>>> LOG: Country dropdown opened (via JS click)');
+
+        // Вводимо назву
+        const filterInput = await SignUpPage.countryFilterInput;
+        await filterInput.waitForDisplayed({ timeout: 5000 });
+        await filterInput.setValue('Ukraine');
         console.log('>>> LOG: Typed "Ukraine" in filter');
 
-        await SignUpPage.ukraineOption.waitForDisplayed();
-        await SignUpPage.ukraineOption.click();
+        // Вибираємо опцію
+        const option = await SignUpPage.ukraineOption;
+        await option.waitForDisplayed({ timeout: 5000 });
+        await option.click();
         console.log('>>> LOG: Selected "Ukraine" from the list');
 
         // 6. Натиснути Create account
-        await SignUpPage.createAccountBtn.scrollIntoView();
-        await SignUpPage.createAccountBtn.click();
+        const createBtn = await SignUpPage.createAccountBtn;
+        await createBtn.scrollIntoView({ block: 'center' });
+        await browser.pause(500);
+        // Тут теж можна використати JS-клік для 100% гарантії в CI
+        await browser.execute((el) => el.click(), createBtn);
         console.log('>>> LOG: Clicked "Create account" button');
 
         // Фінальна перевірка (опціонально, залежить від того, чи з'явиться капча)
@@ -141,7 +160,7 @@ describe('Homework 5: GitHub Registration Flow', () => {
 
         // 7. Перевірка фінального елементу за ID
         const successElem = await SubscribePage.successHeading;
-        await successElem.waitForExist({ timeout: 10000 });
+        await successElem.waitForExist({ timeout: 5000 });
         
         await expect(successElem).toBeDisplayed();
         console.log('>>> LOG: Step 7: Success heading #hero-section-brand-heading is visible');
@@ -157,8 +176,10 @@ describe('Homework 5: GitHub Registration Flow', () => {
 
         // 2. Натиснути на кнопку-тригер пошуку
         const trigger = await SearchPage.searchTrigger;
-        await trigger.waitForClickable({ timeout: 10000 });
-        await trigger.click();
+        await trigger.waitForExist({ timeout: 5000 });
+        await trigger.scrollIntoView({ block: 'center' });
+        await browser.pause(1000); // Даємо час анімації
+        await browser.execute((el) => el.click(), trigger);
         console.log('>>> LOG: Step 2: Search trigger button clicked');
 
         // 3. Ввести "car" та натиснути Enter

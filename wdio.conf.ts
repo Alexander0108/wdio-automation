@@ -56,7 +56,7 @@ export const config: WebdriverIO.Config = {
     'goog:chromeOptions': {
         // Додаємо аргумент window-size
         args: process.env.CI 
-            ? ['--headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage', '--window-size=1920,1080'] 
+            ? ['--headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage', '--window-size=1920,1080', '--disable-notifications', '--disable-extensions'] 
             : []
         }
     }],

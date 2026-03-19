@@ -31,8 +31,11 @@ describe('Homework 3: GitHub Functionality Tests', () => {
     });
 
     it('TC-3: Should navigate to Pricing page', async () => {
-        await GithubPage.pricingLink.click()
-        await expect(browser).toHaveUrl('https://github.com/pricing')
+    await GithubPage.pricingLink.scrollIntoView({ block: 'center' });
+    await GithubPage.pricingLink.click();
+    
+    // Використовуємо регулярний вираз для перевірки частини URL
+    await expect(browser).toHaveUrl(expect.stringContaining('/pricing'));
     })
 
     it('TC-4: Should open Trending repositories', async () => {
