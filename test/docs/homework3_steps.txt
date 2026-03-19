@@ -1,0 +1,37 @@
+✅ Title: GitHub Core Functionality Verification (Homework 3)
+💎 Precondition: User is not logged in, browser is maximized.
+
+🔸 TC-1: Search for a repository
+- Go to https://github.com
+- Type "webdriverio" in search input and press Enter
+📍 Expected result:
+- Results page contains search query and results are displayed.
+
+🔸 TC-2: SignIn with empty credentials
+- Go to https://github.com/login
+- Fill in username and password fields with incorrect data
+- Click "Sign in" button
+📍 Expected result:
+- "Incorrect username or password." message is displayed.
+- User stays on the login page.
+
+🔸 TC-3: Navigate to Pricing page
+- Go to https://github.com
+- Click "Pricing" link in the header
+📍 Expected result:
+- User is redirected to /pricing page.
+- Main pricing plans are visible.
+
+🔸 TC-4: Open Trending repositories
+- Go to https://github.com/explore
+- Click on "Trending" tab
+📍 Expected result:
+- Page URL contains "/trending".
+- List of popular repositories is loaded.
+
+🔸 TC-5: Check Footer Terms link
+- Go to https://github.com
+- Scroll to the bottom of the page
+- Click "Terms" link
+📍 Expected result:
+- User is redirected to GitHub Terms of Service page.

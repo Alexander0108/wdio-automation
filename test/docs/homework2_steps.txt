@@ -1,0 +1,10 @@
+Title: Navigate to API and validate WebDriver Protocol header
+Steps:
+1. Go to https://webdriver.io
+2. Click "API" in the navigation bar
+3. Scroll down to the footer "API Reference" link
+4. Scroll up to the "Next" (Protocol Commands) button
+5. Click "Next" button
+6. Scroll to "WebDriver Protocol" header
+Expected result:
+- "WebDriver Protocol" header is visible on the page.

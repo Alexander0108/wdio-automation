@@ -1,0 +1,40 @@
+✅ Title: GitHub SignUp Flow - Random Data & Country Selection
+💎 Precondition: Browser is maximized, base URL is github.com.
+
+🔸TC-1: Should fill the signup form with random data and select Ukraine
+Flow:
+1. Open GitHub.
+2. Click "Sign up" button via header.
+3. Verify signup form container existence.
+4. Fill email, password, and username with random data.
+5. Search and select "Ukraine" in the country dropdown.
+6. Click "Create account".
+
+📍 Expected Result: Form is filled correctly, and the account creation is triggered.
+
+🔸 TC-2: Marketing Flow - Brand Button & Try Now
+- Open GitHub.
+- Scroll to and click the Brand Button (partial class match).
+- Click "Try now" submit button.
+- Verify SessionsAuthHeader presence.
+
+📍 Expected Result: Redirect to the authentication/signup page with a specific header.
+
+🔸 TC-3: Newsletter Subscription Flow
+- Open GitHub.
+- Scroll to "Subscribe" link (btn-muted-mktg) and verify clickability.
+- Verify Heading (Primer_Brand__Heading-module).
+- Enter random email in [type="email"].
+- Select "Ukraine" in [class*="Primer_Brand__Select-mo"] via keyboard input (Enter).
+- Click the final "Subscribe" button.
+- Verify success element (id="hero-section-brand-heading").
+
+📍 Expected Result: Form submitted, redirection to success page with #hero-section-brand-heading.
+
+🔸 TC-4: Global Search Functionality
+- Open GitHub.
+- Click Search Trigger button ([data-target="qbsearch-input.inputButton"]).
+- Activate search input and type "car".
+- Trigger search via "Enter" key.
+- Validate results: find at least one element with class "Box-sc" containing the text "car" (case-insensitive).
+📍 Expected Result: Search results page is displayed with relevant items.

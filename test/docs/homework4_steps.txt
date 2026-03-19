@@ -1,0 +1,13 @@
+✅ Title: DOU.ua Sequential Navigation & Dynamic Projects
+💎 Precondition: Base URL dou.ua, window maximized.
+
+🔸 Scenario:
+1-2. Navigate to Salaries from Main Header.
+3. Validate "I Квартиль" visibility (data-heavy section).
+4. Jump to Jobs section via direct link.
+5. Validate and trigger Search.
+6. Verify "Quick Transition" (dynamic area).
+7. Handle random Project Button (GameDev or DefTech) using CSS OR-logic.
+8-9. Validate internal block links (News/Blogs) using nested selectors.
+
+📍 Result: 100% Stability across dynamic domain rotations.
