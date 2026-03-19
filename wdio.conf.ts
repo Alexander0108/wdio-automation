@@ -54,13 +54,8 @@ export const config: WebdriverIO.Config = {
     capabilities: [{
     browserName: 'chrome',
     'goog:chromeOptions': {
-        args: [
-            //'--headless', 
-            '--disable-gpu', 
-            '--no-sandbox',
-            '--window-size=1920,1080' // Примусово ставимо велике вікно
-        ]
-    }
+        args: process.env.CI ? ['--headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage'] : []
+        }
     }],
 
     //
