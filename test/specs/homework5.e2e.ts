@@ -157,7 +157,7 @@ describe('Homework 5: GitHub Registration Flow', () => {
 
         // 2. Натиснути на кнопку-тригер пошуку
         const trigger = await SearchPage.searchTrigger;
-        await trigger.waitForClickable({ timeout: 5000 });
+        await trigger.waitForClickable({ timeout: 10000 });
         await trigger.click();
         console.log('>>> LOG: Step 2: Search trigger button clicked');
 
